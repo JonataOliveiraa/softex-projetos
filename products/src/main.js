@@ -21,8 +21,15 @@ function main() {
                     }
                 } while(exists)
 
-                const value = prompt(`TYPE THE VALUE IN $`)
-                const quantity = prompt(`TYPE THE PRODUCT QUANTIY`)
+                let value = Number(prompt(`TYPE THE VALUE IN $`))
+                while(value < 0 || isNaN(value)) {
+                    value = Number(prompt('INVALID VALUE! TYPE THE PRODUCT VALUE AGAIN (IN R$, >= 0):'))
+                }
+
+                let quantity = Number(prompt(`TYPE THE PRODUCT QUANTIY`))
+                while(quantity < 0 || isNaN(quantity)) {
+                    quantity = Number(prompt('INVALID QUANTITY! TYPE THE QUANTITY AGAIN (IN R$, >= 0):'))
+                }
 
                 addProductInStock(product, value, quantity)
                 break;
@@ -30,8 +37,16 @@ function main() {
 
         case 2:{
             const product = prompt(`TYPE THE PRODUCT NAME`)
+
             const value = prompt(`TYPE THE VALUE IN $`) 
+            while(value < 0 || isNaN(value)) {
+                    value = Number(prompt('INVALID VALUE! TYPE THE PRODUCT VALUE AGAIN (IN R$, >= 0):'))
+            }
             const quantity = prompt(`TYPE THE PRODUCT QUANTITY`)
+            while(quantity < 0 || isNaN(quantity)) {
+                quantity = Number(prompt('INVALID QUANTITY! TYPE THE QUANTITY AGAIN (IN R$, >= 0):'))
+            }
+            
             updateProductInStock(product, value, quantity)
             break;
         }

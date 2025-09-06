@@ -15,6 +15,9 @@ function menu() {
             let attempt = Number(prompt(`NUMBER GENERATED! TRY TO GUESS. ITS BETWEEN 0 - 100`))
 
             while(attempt !== number) {
+                while(attempt < 0 || attempt > 100 || isNaN(attempt)) {
+                    attempt = Number(prompt(`INVALID NUMBER! ITS BETWEEN 0 - 100`))
+                }
                 if(attempt > number) {
                     if(attempt - number <= 10) {
                         attempt = Number(prompt('THE NUMBER IS A LITTLE BIT MORE SMALLER! TRY TO GUESS.'))

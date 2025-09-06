@@ -53,11 +53,15 @@ function calcExpenses() {
 }
 
 function menu() {
-    const option = Number(prompt('WELCOME TO THE EXPENSE CALCULATOR. \nTYPE THE NUMBER TO CHOOSE ONE OF OPTIONS:\n[1] - ADD EXPENSE \n[2] - CALC EXPENSES \n[3] - CLEAR EXPENSES \n[0] - EXIT'))
+    const option = Number(prompt('WELCOME TO THE EXPENSE CALCULATOR. \nTYPE THE NUMBER TO CHOOSE ONE OF OPTIONS:\n[1] - ADD EXPENSE \n[2] - SHOW EXPENSES DETAILS \n[3] - CLEAR EXPENSES \n[0] - EXIT'))
     switch (option) {
         case 1:
             const name = prompt('TYPE THE EXPENSE NAME:')
-            const value = Number(prompt('TYPE THE EXPENSE VALEU (IN R$):'))
+            let value = Number(prompt('TYPE THE EXPENSE VALEU (IN R$, >= 0):'))
+
+            while(value < 0 || isNaN(value)) {
+                value = Number(prompt('INVALID VALUE! TYPE THE EXPENSE VALUE AGAIN (IN R$, >= 0):'))
+            }
             const expense = addExpense(name, value)
 
             if(!expense) {
